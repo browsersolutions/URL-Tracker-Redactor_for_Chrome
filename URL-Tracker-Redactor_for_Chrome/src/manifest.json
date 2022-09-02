@@ -12,7 +12,6 @@
     },
  "default_locale": "en",
 
-
   "declarative_net_request" : {
     "rule_resources" : [{
       "id": "ruleset_1",
