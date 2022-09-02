@@ -1,0 +1,186 @@
+[
+    {
+        "id": 1,
+        "comment": "Google analytics rule",
+        "priority": 2,
+        "condition": {
+            "regexFilter": "[?&]utm_(campaign|source|medium|term|content)=[^&]+",
+            "resourceTypes": ["main_frame", "sub_frame", "stylesheet", "script", "image", "font", "object", "xmlhttprequest", "ping", "csp_report", "media", "websocket", "other"]
+        },
+        "action": {
+            "type": "redirect",
+            "redirect": {
+                "transform": {
+                    "queryTransform": {
+                        "removeParams": ["utm_source", "utm_medium", "utm_term", "utm_content", "utm_campaign"
+                        ]
+                    }
+                }
+            }
+        }
+    }, {
+        "id": 2,
+        "comment": "Action Map",
+        "priority": 2,
+        "condition": {
+            "regexFilter": "[?&](action_object_map|action_type_map|action_ref_map)=[^&]+",
+            "resourceTypes": ["main_frame", "sub_frame"]
+        },
+        "action": {
+            "type": "redirect",
+            "redirect": {
+                "transform": {
+                    "queryTransform": {
+                        "removeParams": ["action_object_map", "action_type_map", "action_ref_map"]
+                    }
+                }
+            }
+        }
+    }, {
+        "id": 3,
+        "comment": "Facebook trackers",
+        "priority": 2,
+        "condition": {
+            "regexFilter": "[?&](fb_action_ids|fb_action_types|fb_ref|fbclid|refsrc@facebook.com|hrc@facebook.com)=[^&]+",
+            "resourceTypes": ["main_frame", "sub_frame", "stylesheet", "script", "image", "font", "object", "xmlhttprequest", "ping", "csp_report", "media", "websocket", "other"]
+        },
+        "action": {
+            "type": "redirect",
+            "redirect": {
+                "transform": {
+                    "queryTransform": {
+                        "removeParams": ["fb_action_ids", "fb_action_types", "fb_ref", "fb_source", "fbclid", "refsrc@facebook.com", "hrc@facebook.com"]
+                    }
+                }
+            }
+        }
+    }, {
+        "id": 4,
+        "comment": "linkedin",
+        "priority": 5,
+        "condition": {
+            "regexFilter": "https://www.linkedin.com/*",
+            "resourceTypes": ["main_frame", "sub_frame", "stylesheet", "script", "image", "font", "object", "xmlhttprequest", "ping", "csp_report", "media", "websocket", "other"]
+        },
+        "action": {
+            "type": "redirect",
+            "redirect": {
+                "transform": {
+                    "queryTransform": {
+                        "removeParams": ["lici"]
+                    }
+                }
+            }
+        }
+    }, {
+        "id": 5,
+        "comment": "linkedin tracker",
+        "priority": 7,
+        "condition": {
+            "urlFilter": "https://www.linkedin.com/li/track",
+            "resourceTypes": ["main_frame", "sub_frame", "stylesheet", "script", "image", "font", "object", "xmlhttprequest", "ping", "csp_report", "media", "websocket", "other"]
+        },
+        "action": {
+            "type": "block"
+
+        }
+    }, {
+        "id": 6,
+        "comment": "Google Analytics collect",
+        "priority": 7,
+        "condition": {
+            "regexFilter": "http.*google-analytics.com[a-z\/]*/collect",
+            "resourceTypes": ["main_frame", "sub_frame", "stylesheet", "script", "image", "font", "object", "xmlhttprequest", "ping", "csp_report", "media", "websocket", "other"]
+        },
+        "action": {
+            "type": "block"
+
+        }
+    }, {
+        "id": 7,
+        "comment": "Doubleclick collect",
+        "priority": 7,
+        "condition": {
+            "regexFilter": "http.*doubleclick.net[a-z\/]*/(collect|gampad|pagead)",
+            "resourceTypes": ["main_frame", "sub_frame", "stylesheet", "script", "image", "font", "object", "xmlhttprequest", "ping", "csp_report", "media", "websocket", "other"]
+        },
+        "action": {
+            "type": "block"
+
+        }
+    }, {
+        "id": 8,
+        "comment": "linkedin collect",
+        "priority": 7,
+        "condition": {
+            "regexFilter": "http.*linkedin.com[a-z\/]*/collect",
+            "resourceTypes": ["main_frame", "sub_frame", "stylesheet", "script", "image", "font", "object", "xmlhttprequest", "ping", "csp_report", "media", "websocket", "other"]
+        },
+        "action": {
+            "type": "block"
+
+        }
+    }, {
+        "id": 9,
+        "comment": "Facebook track",
+        "priority": 7,
+        "condition": {
+            "urlFilter": "https://www.facebook.com/tr",
+            "resourceTypes": ["main_frame", "sub_frame", "stylesheet", "script", "image", "font", "object", "xmlhttprequest", "ping", "csp_report", "media", "websocket", "other"]
+        },
+        "action": {
+            "type": "block"
+
+        }
+    }, {
+        "id": 10,
+        "comment": "Facebook track",
+        "priority": 7,
+        "condition": {
+            "urlFilter": "https://connect.facebook.net/en_US/fbevents.js",
+            "resourceTypes": ["main_frame", "sub_frame", "stylesheet", "script", "image", "font", "object", "xmlhttprequest", "ping", "csp_report", "media", "websocket", "other"]
+        },
+        "action": {
+            "type": "block"
+
+        }
+    }, {
+        "id": 11,
+        "comment": "ad domains",
+        "priority": 7,
+        "condition": {
+
+            "regexFilter": "http.*(adform.net|adnxs.com|smartadserver.com|adnuntius.delivery|adgrx.com)/",
+            "resourceTypes": ["main_frame", "sub_frame", "stylesheet", "script", "image", "font", "object", "xmlhttprequest", "ping", "csp_report", "media", "websocket", "other"]
+
+        },
+        "action": {
+            "type": "block"
+
+        }
+    }, {
+        "id": 12,
+        "comment": "Google syndication collect",
+        "priority": 7,
+        "condition": {
+            "regexFilter": "http.*googlesyndication.com[a-z\/]*/pagead",
+            "resourceTypes": ["main_frame", "sub_frame", "stylesheet", "script", "image", "font", "object", "xmlhttprequest", "ping", "csp_report", "media", "websocket", "other"]
+        },
+        "action": {
+            "type": "block"
+
+        }
+    }, {
+        "id": 13,
+        "comment": "Google syndication collect",
+        "priority": 7,
+        "condition": {
+            "regexFilter": "http.*google.com/(adsid)",
+            "resourceTypes": ["main_frame", "sub_frame", "stylesheet", "script", "image", "font", "object", "xmlhttprequest", "ping", "csp_report", "media", "websocket", "other"]
+        },
+        "action": {
+            "type": "block"
+
+        }
+    }
+]
