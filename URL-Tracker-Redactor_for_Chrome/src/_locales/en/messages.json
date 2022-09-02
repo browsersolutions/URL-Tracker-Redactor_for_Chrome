@@ -1,5 +1,5 @@
 {
 	"extensionName": {"message": "URL Tracker Redactor"},
 	"extensionDescription": {"message": "Remove from URLs tagvalues used for marketing and analytics purposes."},
-	"extension_long_Description":{"message": "Remove from URLs tagvalues used for marketing and analytics purposes. This extension is still under active develppment (Sep-2022)."}
+"extension_long_Description":{"message": "Remove from URLs tagvalues used for marketing and analytics purposes. This extension is still under active develppment (Sep-2022)."}
 }

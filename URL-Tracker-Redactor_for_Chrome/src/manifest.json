@@ -20,8 +20,7 @@
       "path": "./data/default-rules/Google.json"
     }]
   },
- 
-  "permissions": [ 
+   "permissions": [ 
      "background",
       "declarativeNetRequest"
    ],
